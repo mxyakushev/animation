@@ -1,0 +1,109 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+    height: 100vh;
+}
+
+
+.wrapper{
+    height: 12rem;
+    width: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* FOOD */
+
+.food-path{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.food{
+    min-height: 1rem;
+    min-width: 1rem;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: moveFood .5s linear infinite;
+    margin: 0 3rem;
+}
+
+/* PAC-MAN */
+
+.pac-man{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -2rem;
+    height: 0;
+    width: 0;
+    border-right: 2rem solid transparent;
+    border-top: 2rem solid rgb(193, 174, 2);
+    border-left: 2rem solid rgb(193, 174, 2);
+    border-bottom: 2rem solid rgb(193, 174, 2);
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.pac-man::before{
+    content: '';
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgb(193, 174, 2);
+    border-bottom-right-radius: 100%;
+    transform: rotate(45deg);
+    transform-origin: top left;
+    animation: lowerJaw .5s ease-in-out infinite;
+}
+
+.pac-man::after{
+    content: '';
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgb(193, 174, 2);
+    border-bottom-right-radius: 100%;
+    transform-origin: top left;
+    transform: rotate(-135deg);
+    animation: upperJaw .5s ease-in-out infinite;
+}
+
+/* ANIMATIONS */
+
+@keyframes moveFood{
+    0%{
+        transform: translateX(3.5rem);
+    }
+    100%{
+        transform: translateX(-3.5rem);
+    }
+}
+
+@keyframes lowerJaw {
+    0%{
+        transform: rotate(45deg);
+    }
+    50%{
+        transform: rotate(2deg);
+    }
+    100%{
+        transform: rotate(45deg);
+    }
+}
+@keyframes upperJaw {
+    0%{
+        transform: rotate(-135deg);
+    }
+    50%{
+        transform: rotate(-92deg);
+    }
+    100%{
+        transform: rotate(-135deg);
+    }
+}
